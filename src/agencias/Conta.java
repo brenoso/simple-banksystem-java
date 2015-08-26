@@ -3,9 +3,9 @@ package agencias;
 public class Conta {
 
        int numero;
-       String nome;
        double saldo;
        double limite;
+       Cliente titular; // declaração de titular do tipo de classe Cliente.
        
        void saca (double quantidade) { // método para sacar determinada qntdade.
                      
@@ -13,8 +13,12 @@ public class Conta {
            {
                System.out.println("Quantidade indisponível para saque.");
            }
-           else this.saldo-= quantidade;
-
+           else
+           { 
+               System.out.println("Saque realizado com sucesso!");
+               this.saldo-= quantidade;
+               System.out.println("Novo Saldo:"+this.saldo);
+           }
        }
 
        void deposita (double quantidade){ // método para depositar uma qntdade.
@@ -24,12 +28,22 @@ public class Conta {
            System.out.println("Impossível depositar. Limite estourado.");
            this.saldo-=quantidade;
        }
+       else
+       {
+           System.out.println("Deposito Realizado com Sucesso!");
+           System.out.println("Novo Saldo:"+this.saldo);
+       }
 
       
        
       
        }
                
+       void transferePara (Conta destino, double quantidade){
+           
+       this.saldo-= quantidade;
+       destino.saldo+=quantidade;
+       }
 }
 
 
